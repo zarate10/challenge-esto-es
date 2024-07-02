@@ -5,7 +5,7 @@ const options: swaggerJSDoc.Options = {
     definition: {
         openapi: '3.0.3',
         info: {
-            title: 'Documentación Challange Esto Es',
+            title: 'Documentación Challenge Esto Es',
             version: '1.0.0'
         },
     },
