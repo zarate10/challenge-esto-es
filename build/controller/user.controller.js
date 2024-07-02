@@ -13,7 +13,7 @@ exports.createUser = exports.getAllUsers = void 0;
 const connect_1 = require("../db/connect");
 const getAllUsers = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const [rows] = yield connect_1.pool.query('SELECT firstname, lastname, email FROM user;');
+        const [rows] = yield connect_1.pool.query('SELECT firstname, lastname, email FROM duser;');
         res.status(200).json(rows);
     }
     catch (e) {
@@ -25,7 +25,7 @@ exports.getAllUsers = getAllUsers;
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { firstname, lastname, email } = req.body;
-        yield connect_1.pool.query('INSERT INTO user VALUES (?,?,?)', [firstname, lastname, email]);
+        yield connect_1.pool.query('INSERT INTO duser VALUES (?,?,?)', [firstname, lastname, email]);
         res.status(200).json('user created successfully');
     }
     catch (e) {

@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS backestoes;
 
 USE backestoes; 
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS duser (
     firstname VARCHAR(32) NOT NULL, 
     lastname VARCHAR(32) NOT NULL, 
     email VARCHAR(120) NOT NULL UNIQUE, 
@@ -18,18 +18,18 @@ CREATE TABLE IF NOT EXISTS project (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_project PRIMARY KEY (name),
     CONSTRAINT chk_status CHECK (status IN ('Enabled', 'Work in Progress', 'Finished')),
-    CONSTRAINT fk_project FOREIGN KEY (created_by) REFERENCES user(email) ON DELETE CASCADE
+    CONSTRAINT fk_project FOREIGN KEY (created_by) REFERENCES duser(email) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS user_project (
     user VARCHAR(120) NOT NULL, 
     project VARCHAR(32) NOT NULL, 
     CONSTRAINT pk_user_project PRIMARY KEY (user, project), 
-    CONSTRAINT fk_user FOREIGN KEY (user) REFERENCES user(email) ON DELETE CASCADE ON UPDATE CASCADE, 
+    CONSTRAINT fk_user FOREIGN KEY (user) REFERENCES duser(email) ON DELETE CASCADE ON UPDATE CASCADE, 
     CONSTRAINT fk_userxproject_project FOREIGN KEY (project) REFERENCES project(name) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
-INSERT INTO user VALUES
+INSERT INTO duser VALUES
 ('Sophia', 'Smith', 'sophiasmith261@gmail.com'),
 ('Alexander', 'Johnson', 'alexanderjohnson812@hotmail.com'),
 ('Olivia', 'Williams', 'oliviawilliams863@gmail.com'),
