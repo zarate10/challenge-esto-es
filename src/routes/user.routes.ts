@@ -23,7 +23,7 @@ router.get('/all', getAllUsers)
  *  post: 
  *      summary: Crear usuario.
  *      tags: 
- *          - Project
+ *          - User
  *      parameters: 
  *          - in: body
  *            schema:  

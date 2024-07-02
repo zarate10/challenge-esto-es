@@ -23,7 +23,7 @@ router.get('/all', user_controller_1.getAllUsers);
  *  post:
  *      summary: Crear usuario.
  *      tags:
- *          - Project
+ *          - User
  *      parameters:
  *          - in: body
  *            schema:
